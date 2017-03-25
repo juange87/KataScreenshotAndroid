@@ -61,6 +61,22 @@ public class SuperHeroDetailActivityTest extends ScreenshotTest {
         compareScreenshot(activity);
     }
 
+    @Test
+    public void showsASuperHeroWithoutDescription() {
+        final SuperHero superHero = givenThereIsASuperHeroWithoutDescription();
+
+        Activity activity = startActivity(superHero);
+
+        compareScreenshot(activity);
+    }
+
+    private SuperHero givenThereIsASuperHeroWithoutDescription() {
+        String superHeroName = "SuperHero";
+        SuperHero superHero = new SuperHero(superHeroName, null, false, null);
+        when(repository.getByName(superHeroName)).thenReturn(superHero);
+        return superHero;
+    }
+
     private SuperHero givenThereIsASuperHeroWithoutName() {
         String superHeroName = "";
         String superHeroDescription = "Super Hero Description";
