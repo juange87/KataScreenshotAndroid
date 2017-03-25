@@ -48,7 +48,6 @@ public class GetSuperHeroByName {
   }
 
   public interface Callback {
-
     void onSuperHeroLoaded(SuperHero superHero);
   }
 }

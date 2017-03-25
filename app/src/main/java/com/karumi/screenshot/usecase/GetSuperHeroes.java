@@ -49,7 +49,6 @@ public class GetSuperHeroes {
   }
 
   public interface Callback {
-
     void onSuperHeroesLoaded(List<SuperHero> superHeroes);
   }
 }
