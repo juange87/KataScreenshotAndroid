@@ -56,6 +56,15 @@ public class SuperHeroViewHolderTest extends ScreenshotTest {
     compareScreenshot(holder, R.dimen.super_hero_row_height);
   }
 
+  @Test public void showsAnAvenger() {
+    SuperHero superHero = givenAnAvenger();
+    SuperHeroViewHolder holder = givenASuperHeroViewHolder();
+
+    holder.render(superHero);
+
+    compareScreenshot(holder, R.dimen.super_hero_row_height);
+  }
+
   private SuperHeroViewHolder givenASuperHeroViewHolder() {
     Context context = getInstrumentation().getTargetContext();
     LayoutInflater inflater = LayoutInflater.from(context);
@@ -97,8 +106,7 @@ public class SuperHeroViewHolderTest extends ScreenshotTest {
     return givenASuperHero("Super Hero Name", "Super Hero Description", false);
   }
 
-  private SuperHero givenASuperHero(String superHeroName, String superHeroDescription,
-      boolean isAvenger) {
+  private SuperHero givenASuperHero(String superHeroName, String superHeroDescription, boolean isAvenger) {
     return new SuperHero(superHeroName, null, isAvenger, superHeroDescription);
   }
 }
