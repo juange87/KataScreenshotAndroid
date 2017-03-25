@@ -79,6 +79,29 @@ public class SuperHeroDetailActivityTest extends ScreenshotTest {
         compareScreenshot(activity);
     }
 
+    @Test
+    public void showsASuperHeroWithLongDescription() {
+        final SuperHero superHero = givenThereIsASuperHeroWithLongDescription();
+
+        Activity activity = startActivity(superHero);
+
+        compareScreenshot(activity);
+    }
+
+    private SuperHero givenThereIsASuperHeroWithLongDescription() {
+        String superHeroName = "SuperHero";
+        String superHeroDescription =
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt "
+                        + "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation "
+                        + "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in "
+                        + "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+                        + "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt "
+                        + "mollit anim id est laborum.";
+        SuperHero superHero = new SuperHero(superHeroName, null, false, superHeroDescription);
+        when(repository.getByName(superHeroName)).thenReturn(superHero);
+        return superHero;
+    }
+
     private SuperHero givenThereIsASuperHeroWithLongName() {
         String superHeroName =
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt "

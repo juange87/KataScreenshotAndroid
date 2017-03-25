@@ -51,8 +51,7 @@ public class MainActivityTest extends ScreenshotTest {
             }
           });
 
-  @Rule public IntentsTestRule<MainActivity> activityRule =
-      new IntentsTestRule<>(MainActivity.class, true, false);
+  @Rule public IntentsTestRule<MainActivity> activityRule = new IntentsTestRule<>(MainActivity.class, true, false);
 
   @Mock SuperHeroesRepository repository;
 
