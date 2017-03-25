@@ -19,18 +19,22 @@ package com.karumi.screenshot;
 import android.app.Activity;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
+
 import com.karumi.screenshot.di.MainComponent;
 import com.karumi.screenshot.di.MainModule;
 import com.karumi.screenshot.model.SuperHero;
 import com.karumi.screenshot.model.SuperHeroesRepository;
 import com.karumi.screenshot.ui.view.MainActivity;
-import it.cosenonjaviste.daggermock.DaggerMockRule;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
+
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+import it.cosenonjaviste.daggermock.DaggerMockRule;
 
 import static org.mockito.Mockito.when;
 
@@ -41,9 +45,8 @@ public class MainActivityTest extends ScreenshotTest {
           new DaggerMockRule.ComponentSetter<MainComponent>() {
             @Override public void setComponent(MainComponent component) {
               SuperHeroesApplication app =
-                  (SuperHeroesApplication) InstrumentationRegistry.getInstrumentation()
-                      .getTargetContext()
-                      .getApplicationContext();
+                      (SuperHeroesApplication) InstrumentationRegistry.getInstrumentation().getTargetContext()
+                              .getApplicationContext();
               app.setComponent(component);
             }
           });
@@ -55,6 +58,14 @@ public class MainActivityTest extends ScreenshotTest {
 
   @Test public void showsEmptyCaseIfThereAreNoSuperHeroes() {
     givenThereAreNoSuperHeroes();
+
+    Activity activity = startActivity();
+
+    compareScreenshot(activity);
+  }
+
+  @Test public void showsCaseIfThereAreOneSuperHeroes() {
+    givenThereAreSomeSuperHeroes(1, true);
 
     Activity activity = startActivity();
 
